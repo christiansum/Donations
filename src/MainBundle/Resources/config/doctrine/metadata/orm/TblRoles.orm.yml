@@ -1,0 +1,58 @@
+TblRoles:
+    type: entity
+    table: tbl_roles
+    indexes:
+        fk_roles_users_idx:
+            columns:
+                - created_by
+        fk_roles_users_mb_idx:
+            columns:
+                - modified_by
+    id:
+        idRole:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_role
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+        createdDt:
+            type: datetime
+            nullable: false
+            column: created_dt
+        modifiedDt:
+            type: datetime
+            nullable: true
+            column: modified_dt
+        active:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+    manyToOne:
+        createdBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                created_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        modifiedBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                modified_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

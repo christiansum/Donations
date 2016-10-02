@@ -1,0 +1,77 @@
+TblRoleUser:
+    type: entity
+    table: tbl_role_user
+    indexes:
+        fk_r_u_roles_idx:
+            columns:
+                - id_role
+        fk_r_u_users_idx:
+            columns:
+                - id_user
+        fk_r_u_users_cb_idx:
+            columns:
+                - created_by
+        fk_r_u_users_mb_idx:
+            columns:
+                - modified_by
+    id:
+        idRoleUser:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_role_user
+            generator:
+                strategy: IDENTITY
+    fields:
+        createdDt:
+            type: datetime
+            nullable: false
+            column: created_dt
+        modifiedDt:
+            type: datetime
+            nullable: true
+            column: modified_dt
+        active:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+    manyToOne:
+        idRole:
+            targetEntity: TblRoles
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_role:
+                    referencedColumnName: id_role
+            orphanRemoval: false
+        idUser:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_user:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        createdBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                created_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        modifiedBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                modified_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

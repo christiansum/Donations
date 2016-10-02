@@ -1,0 +1,88 @@
+<?php
+
+namespace MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TblUsers
+ *
+ * @ORM\Table(name="tbl_users")
+ * @ORM\Entity
+ */
+class TblUsers
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idUser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=45, nullable=false)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="second_name", type="string", length=45, nullable=false)
+     */
+    private $secondName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=45, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cel_number", type="integer", nullable=false)
+     */
+    private $celNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=45, nullable=false)
+     */
+    private $address;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="created_by", type="integer", nullable=false)
+     */
+    private $createdBy;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_dt", type="datetime", nullable=false)
+     */
+    private $createdDt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="modify_by", type="integer", nullable=true)
+     */
+    private $modifyBy;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modify_dt", type="datetime", nullable=true)
+     */
+    private $modifyDt;
+
+
+}

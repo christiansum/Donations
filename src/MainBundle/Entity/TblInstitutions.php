@@ -1,0 +1,129 @@
+<?php
+
+namespace MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TblInstitutions
+ *
+ * @ORM\Table(name="tbl_institutions", indexes={@ORM\Index(name="fk_ins_users_cb_idx", columns={"created_by"}), @ORM\Index(name="fk_ins_users_mb_idx", columns={"modified_by"})})
+ * @ORM\Entity
+ */
+class TblInstitutions
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_ins", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idIns;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="about", type="string", length=255, nullable=false)
+     */
+    private $about;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="thumbnail", type="string", length=45, nullable=false)
+     */
+    private $thumbnail;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="min_amount", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $minAmount;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_country", type="integer", nullable=false)
+     */
+    private $idCountry;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=45, nullable=false)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contact_name", type="string", length=45, nullable=false)
+     */
+    private $contactName;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="contact_phone", type="integer", nullable=false)
+     */
+    private $contactPhone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=45, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_dt", type="datetime", nullable=false)
+     */
+    private $createdDt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modified_dt", type="datetime", nullable=true)
+     */
+    private $modifiedDt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="active", type="integer", nullable=false)
+     */
+    private $active;
+
+    /**
+     * @var \TblUsers
+     *
+     * @ORM\ManyToOne(targetEntity="TblUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id_user")
+     * })
+     */
+    private $createdBy;
+
+    /**
+     * @var \TblUsers
+     *
+     * @ORM\ManyToOne(targetEntity="TblUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="modified_by", referencedColumnName="id_user")
+     * })
+     */
+    private $modifiedBy;
+
+
+}

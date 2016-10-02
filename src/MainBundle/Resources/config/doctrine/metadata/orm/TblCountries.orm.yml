@@ -1,0 +1,58 @@
+TblCountries:
+    type: entity
+    table: tbl_countries
+    indexes:
+        fk_countries_users_idx:
+            columns:
+                - created_by
+        fk_countries_users_idx1:
+            columns:
+                - modified_by
+    id:
+        idCountry:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_country
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        createdDt:
+            type: datetime
+            nullable: false
+            column: created_dt
+        modifiedDt:
+            type: datetime
+            nullable: true
+            column: modified_dt
+        active:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+    manyToOne:
+        createdBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                created_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        modifiedBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                modified_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

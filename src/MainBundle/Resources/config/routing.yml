@@ -1,0 +1,7 @@
+main_users:
+    resource: "@MainBundle/Resources/config/routing/tblusers.yml"
+    prefix:   /users
+
+main_homepage:
+    path:     /
+    defaults: { _controller: MainBundle:Default:index }

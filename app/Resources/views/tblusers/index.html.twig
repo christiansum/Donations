@@ -1,0 +1,55 @@
+{% extends ['MainBundle::header.html.twig','MainBundle::footer.html.twig'] %}
+{% block title %}Users{% endblock %}
+{%  block body %}
+    <h1>TblUsers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Iduser</th>
+                <th>Firstname</th>
+                <th>Secondname</th>
+                <th>Email</th>
+                <th>Celnumber</th>
+                <th>Address</th>
+                <th>Createdby</th>
+                <th>Createddt</th>
+                <th>Modifyby</th>
+                <th>Modifydt</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tblUser in tblUsers %}
+            <tr>
+                <td><a href="{{ path('users_show', { 'id': tblUser.idUser }) }}">{{ tblUser.idUser }}</a></td>
+                <td>{{ tblUser.firstName }}</td>
+                <td>{{ tblUser.secondName }}</td>
+                <td>{{ tblUser.email }}</td>
+                <td>{{ tblUser.celNumber }}</td>
+                <td>{{ tblUser.address }}</td>
+                <td>{{ tblUser.createdBy }}</td>
+                <td>{% if tblUser.createdDt %}{{ tblUser.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tblUser.modifyBy }}</td>
+                <td>{% if tblUser.modifyDt %}{{ tblUser.modifyDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('users_show', { 'id': tblUser.idUser }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('users_edit', { 'id': tblUser.idUser }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('users_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

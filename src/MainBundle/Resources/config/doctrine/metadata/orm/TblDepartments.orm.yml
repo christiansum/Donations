@@ -1,0 +1,58 @@
+TblDepartments:
+    type: entity
+    table: tbl_departments
+    indexes:
+        fk_dept_users_cb_idx:
+            columns:
+                - created_by
+        fk_dept_users_mb_idx:
+            columns:
+                - modified_by
+    id:
+        idDept:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_dept
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        createdDt:
+            type: datetime
+            nullable: false
+            column: created_dt
+        modifiedDt:
+            type: datetime
+            nullable: true
+            column: modified_dt
+        active:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+    manyToOne:
+        createdBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                created_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        modifiedBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                modified_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,100 @@
+TblInstitutions:
+    type: entity
+    table: tbl_institutions
+    indexes:
+        fk_ins_users_cb_idx:
+            columns:
+                - created_by
+        fk_ins_users_mb_idx:
+            columns:
+                - modified_by
+    id:
+        idIns:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_ins
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        about:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        thumbnail:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        minAmount:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: min_amount
+        idCountry:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_country
+        address:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        contactName:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: contact_name
+        contactPhone:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: contact_phone
+        email:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        createdDt:
+            type: datetime
+            nullable: false
+            column: created_dt
+        modifiedDt:
+            type: datetime
+            nullable: true
+            column: modified_dt
+        active:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+    manyToOne:
+        createdBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                created_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        modifiedBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                modified_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

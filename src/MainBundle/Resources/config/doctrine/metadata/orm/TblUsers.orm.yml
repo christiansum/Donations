@@ -1,0 +1,153 @@
+TblUsers:
+    type: entity
+    table: tbl_users
+    indexes:
+        fk_users_countries_idx:
+            columns:
+                - id_country
+        fk_users_departments_idx:
+            columns:
+                - id_dept
+        fk_users_users_idx:
+            columns:
+                - created_by
+        fk_users_users_mb_idx:
+            columns:
+                - modified_by
+    uniqueConstraints:
+        id_document_UNIQUE:
+            columns:
+                - id_document
+    id:
+        idUser:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_user
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        firstName:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            column: first_name
+        secondName:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: second_name
+        thirdName:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: third_name
+        firstLastname:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            column: first_lastname
+        secondLastname:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: second_lastname
+        marriageLastname:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            column: marriage_lastname
+        idDocument:
+            type: bigint
+            nullable: false
+            unsigned: false
+            column: id_document
+        gender:
+            type: string
+            nullable: false
+            length: 2
+            fixed: false
+        maritalStatus:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: marital_status
+        email:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        phoneNumber:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: phone_number
+        cellphoneNumber:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: cellphone_number
+        createdDt:
+            type: datetime
+            nullable: false
+            column: created_dt
+        modifiedDt:
+            type: datetime
+            nullable: true
+            column: modified_dt
+        active:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+    manyToOne:
+        idCountry:
+            targetEntity: TblCountries
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_country:
+                    referencedColumnName: id_country
+            orphanRemoval: false
+        idDept:
+            targetEntity: TblDepartments
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_dept:
+                    referencedColumnName: id_dept
+            orphanRemoval: false
+        createdBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                created_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        modifiedBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                modified_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

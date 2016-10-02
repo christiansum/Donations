@@ -1,0 +1,90 @@
+TblCards:
+    type: entity
+    table: tbl_cards
+    indexes:
+        fk_cards_user_idx:
+            columns:
+                - id_user
+        fk_cards_users_cb_idx:
+            columns:
+                - created_by
+        fk_cards_users_mb_idx:
+            columns:
+                - modified_by
+    id:
+        idCard:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_card
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        cardNum:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: card_num
+        codeVal:
+            type: string
+            nullable: false
+            length: 40
+            fixed: true
+            comment: "SHA1 = 160-bit hash value.\nSHA_160_bit CHAR(40)"
+            column: code_val
+        dueDate:
+            type: date
+            nullable: false
+            column: due_date
+        tittle:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        createdDt:
+            type: datetime
+            nullable: false
+            column: created_dt
+        modifiedDt:
+            type: datetime
+            nullable: true
+            column: modified_dt
+        active:
+            type: integer
+            nullable: false
+            unsigned: false
+    manyToOne:
+        idUser:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_user:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        createdBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                created_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        modifiedBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                modified_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,94 @@
+TblDonations:
+    type: entity
+    table: tbl_donations
+    indexes:
+        fk_don_ins_idx:
+            columns:
+                - id_ins
+        fk_don_user_idx:
+            columns:
+                - id_user
+        fk_don_cards_idx:
+            columns:
+                - id_card
+        fk_don_users_cb_idx:
+            columns:
+                - created_by
+        fk_don_users_mb_idx:
+            columns:
+                - modified_by
+    id:
+        idDon:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_don
+            generator:
+                strategy: IDENTITY
+    fields:
+        amount:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        createdDt:
+            type: datetime
+            nullable: false
+            column: created_dt
+        modifiedDt:
+            type: datetime
+            nullable: true
+            column: modified_dt
+        active:
+            type: integer
+            nullable: false
+            unsigned: false
+            default: '1'
+    manyToOne:
+        idCard:
+            targetEntity: TblCards
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_card:
+                    referencedColumnName: id_card
+            orphanRemoval: false
+        idIns:
+            targetEntity: TblInstitutions
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_ins:
+                    referencedColumnName: id_ins
+            orphanRemoval: false
+        idUser:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_user:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        createdBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                created_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+        modifiedBy:
+            targetEntity: TblUsers
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                modified_by:
+                    referencedColumnName: id_user
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
