@@ -1,0 +1,24 @@
+depts_admin_index:
+    path:     /
+    defaults: { _controller: "MainBundle:TblDepartments:index" }
+    methods:  GET
+
+depts_admin_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:TblDepartments:show" }
+    methods:  GET
+
+depts_admin_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:TblDepartments:new" }
+    methods:  [GET, POST]
+
+depts_admin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:TblDepartments:edit" }
+    methods:  [GET, POST]
+
+depts_admin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:TblDepartments:delete" }
+    methods:  DELETE

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblDonations</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Iddon</th>
+                <td>{{ tblDonation.idDon }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ tblDonation.amount }}</td>
+            </tr>
+            <tr>
+                <th>Createddt</th>
+                <td>{% if tblDonation.createdDt %}{{ tblDonation.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modifieddt</th>
+                <td>{% if tblDonation.modifiedDt %}{{ tblDonation.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ tblDonation.active }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('donations_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('donations_edit', { 'id': tblDonation.idDon }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

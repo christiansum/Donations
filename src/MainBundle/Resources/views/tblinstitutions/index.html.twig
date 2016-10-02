@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblInstitutions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idins</th>
+                <th>Name</th>
+                <th>About</th>
+                <th>Thumbnail</th>
+                <th>Minamount</th>
+                <th>Idcountry</th>
+                <th>Address</th>
+                <th>Contactname</th>
+                <th>Contactphone</th>
+                <th>Email</th>
+                <th>Createddt</th>
+                <th>Modifieddt</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tblInstitution in tblInstitutions %}
+            <tr>
+                <td><a href="{{ path('institutions_show', { 'id': tblInstitution.idIns }) }}">{{ tblInstitution.idIns }}</a></td>
+                <td>{{ tblInstitution.name }}</td>
+                <td>{{ tblInstitution.about }}</td>
+                <td>{{ tblInstitution.thumbnail }}</td>
+                <td>{{ tblInstitution.minAmount }}</td>
+                <td>{{ tblInstitution.idCountry }}</td>
+                <td>{{ tblInstitution.address }}</td>
+                <td>{{ tblInstitution.contactName }}</td>
+                <td>{{ tblInstitution.contactPhone }}</td>
+                <td>{{ tblInstitution.email }}</td>
+                <td>{% if tblInstitution.createdDt %}{{ tblInstitution.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if tblInstitution.modifiedDt %}{{ tblInstitution.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tblInstitution.active }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('institutions_show', { 'id': tblInstitution.idIns }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('institutions_edit', { 'id': tblInstitution.idIns }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('institutions_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

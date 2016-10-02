@@ -1,0 +1,24 @@
+roles_admin_index:
+    path:     /
+    defaults: { _controller: "MainBundle:TblRoles:index" }
+    methods:  GET
+
+roles_admin_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:TblRoles:show" }
+    methods:  GET
+
+roles_admin_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:TblRoles:new" }
+    methods:  [GET, POST]
+
+roles_admin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:TblRoles:edit" }
+    methods:  [GET, POST]
+
+roles_admin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:TblRoles:delete" }
+    methods:  DELETE

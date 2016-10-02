@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblCountries list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idcountry</th>
+                <th>Name</th>
+                <th>Createddt</th>
+                <th>Modifieddt</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tblCountry in tblCountries %}
+            <tr>
+                <td><a href="{{ path('countries_admin_show', { 'id': tblCountry.idCountry }) }}">{{ tblCountry.idCountry }}</a></td>
+                <td>{{ tblCountry.name }}</td>
+                <td>{% if tblCountry.createdDt %}{{ tblCountry.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if tblCountry.modifiedDt %}{{ tblCountry.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tblCountry.active }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('countries_admin_show', { 'id': tblCountry.idCountry }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('countries_admin_edit', { 'id': tblCountry.idCountry }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('countries_admin_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

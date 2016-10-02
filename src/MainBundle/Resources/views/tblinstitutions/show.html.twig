@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblInstitutions</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idins</th>
+                <td>{{ tblInstitution.idIns }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ tblInstitution.name }}</td>
+            </tr>
+            <tr>
+                <th>About</th>
+                <td>{{ tblInstitution.about }}</td>
+            </tr>
+            <tr>
+                <th>Thumbnail</th>
+                <td>{{ tblInstitution.thumbnail }}</td>
+            </tr>
+            <tr>
+                <th>Minamount</th>
+                <td>{{ tblInstitution.minAmount }}</td>
+            </tr>
+            <tr>
+                <th>Idcountry</th>
+                <td>{{ tblInstitution.idCountry }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ tblInstitution.address }}</td>
+            </tr>
+            <tr>
+                <th>Contactname</th>
+                <td>{{ tblInstitution.contactName }}</td>
+            </tr>
+            <tr>
+                <th>Contactphone</th>
+                <td>{{ tblInstitution.contactPhone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ tblInstitution.email }}</td>
+            </tr>
+            <tr>
+                <th>Createddt</th>
+                <td>{% if tblInstitution.createdDt %}{{ tblInstitution.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modifieddt</th>
+                <td>{% if tblInstitution.modifiedDt %}{{ tblInstitution.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ tblInstitution.active }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('institutions_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('institutions_edit', { 'id': tblInstitution.idIns }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblDepartments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Iddept</th>
+                <th>Name</th>
+                <th>Createddt</th>
+                <th>Modifieddt</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tblDepartment in tblDepartments %}
+            <tr>
+                <td><a href="{{ path('depts_admin_show', { 'id': tblDepartment.idDept }) }}">{{ tblDepartment.idDept }}</a></td>
+                <td>{{ tblDepartment.name }}</td>
+                <td>{% if tblDepartment.createdDt %}{{ tblDepartment.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if tblDepartment.modifiedDt %}{{ tblDepartment.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tblDepartment.active }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('depts_admin_show', { 'id': tblDepartment.idDept }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('depts_admin_edit', { 'id': tblDepartment.idDept }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('depts_admin_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

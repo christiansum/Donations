@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblRoleUser</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idroleuser</th>
+                <td>{{ tblRoleUser.idRoleUser }}</td>
+            </tr>
+            <tr>
+                <th>Createddt</th>
+                <td>{% if tblRoleUser.createdDt %}{{ tblRoleUser.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modifieddt</th>
+                <td>{% if tblRoleUser.modifiedDt %}{{ tblRoleUser.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ tblRoleUser.active }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('role_user_admin_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('role_user_admin_edit', { 'id': tblRoleUser.idRoleUser }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

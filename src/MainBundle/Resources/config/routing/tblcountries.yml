@@ -1,0 +1,24 @@
+countries_admin_index:
+    path:     /
+    defaults: { _controller: "MainBundle:TblCountries:index" }
+    methods:  GET
+
+countries_admin_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:TblCountries:show" }
+    methods:  GET
+
+countries_admin_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:TblCountries:new" }
+    methods:  [GET, POST]
+
+countries_admin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:TblCountries:edit" }
+    methods:  [GET, POST]
+
+countries_admin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:TblCountries:delete" }
+    methods:  DELETE

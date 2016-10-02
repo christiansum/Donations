@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblUsers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Secondname</th>
+                <th>Thirdname</th>
+                <th>Firstlastname</th>
+                <th>Secondlastname</th>
+                <th>Marriagelastname</th>
+                <th>Iddocument</th>
+                <th>Gender</th>
+                <th>Maritalstatus</th>
+                <th>Phonenumber</th>
+                <th>Cellphonenumber</th>
+                <th>Createddt</th>
+                <th>Modifieddt</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tblUser in tblUsers %}
+            <tr>
+                <td><a href="{{ path('users_show', { 'id': tblUser.id }) }}">{{ tblUser.id }}</a></td>
+                <td>{{ tblUser.firstName }}</td>
+                <td>{{ tblUser.secondName }}</td>
+                <td>{{ tblUser.thirdName }}</td>
+                <td>{{ tblUser.firstLastname }}</td>
+                <td>{{ tblUser.secondLastname }}</td>
+                <td>{{ tblUser.marriageLastname }}</td>
+                <td>{{ tblUser.idDocument }}</td>
+                <td>{{ tblUser.gender }}</td>
+                <td>{{ tblUser.maritalStatus }}</td>
+                <td>{{ tblUser.phoneNumber }}</td>
+                <td>{{ tblUser.cellphoneNumber }}</td>
+                <td>{% if tblUser.createdDt %}{{ tblUser.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if tblUser.modifiedDt %}{{ tblUser.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tblUser.active }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('users_show', { 'id': tblUser.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('users_edit', { 'id': tblUser.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('users_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

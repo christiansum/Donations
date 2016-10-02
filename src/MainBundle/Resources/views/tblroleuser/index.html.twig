@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblRoleUser list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idroleuser</th>
+                <th>Createddt</th>
+                <th>Modifieddt</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tblRoleUser in tblRoleUsers %}
+            <tr>
+                <td><a href="{{ path('role_user_admin_show', { 'id': tblRoleUser.idRoleUser }) }}">{{ tblRoleUser.idRoleUser }}</a></td>
+                <td>{% if tblRoleUser.createdDt %}{{ tblRoleUser.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if tblRoleUser.modifiedDt %}{{ tblRoleUser.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tblRoleUser.active }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('role_user_admin_show', { 'id': tblRoleUser.idRoleUser }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('role_user_admin_edit', { 'id': tblRoleUser.idRoleUser }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('role_user_admin_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,24 @@
+role_user_admin_index:
+    path:     /
+    defaults: { _controller: "MainBundle:TblRoleUser:index" }
+    methods:  GET
+
+role_user_admin_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:TblRoleUser:show" }
+    methods:  GET
+
+role_user_admin_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:TblRoleUser:new" }
+    methods:  [GET, POST]
+
+role_user_admin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:TblRoleUser:edit" }
+    methods:  [GET, POST]
+
+role_user_admin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:TblRoleUser:delete" }
+    methods:  DELETE

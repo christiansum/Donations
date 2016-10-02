@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblCards</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idcard</th>
+                <td>{{ tblCard.idCard }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ tblCard.type }}</td>
+            </tr>
+            <tr>
+                <th>Cardnum</th>
+                <td>{{ tblCard.cardNum }}</td>
+            </tr>
+            <tr>
+                <th>Codeval</th>
+                <td>{{ tblCard.codeVal }}</td>
+            </tr>
+            <tr>
+                <th>Duedate</th>
+                <td>{% if tblCard.dueDate %}{{ tblCard.dueDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Tittle</th>
+                <td>{{ tblCard.tittle }}</td>
+            </tr>
+            <tr>
+                <th>Createddt</th>
+                <td>{% if tblCard.createdDt %}{{ tblCard.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modifieddt</th>
+                <td>{% if tblCard.modifiedDt %}{{ tblCard.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ tblCard.active }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cards_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('cards_edit', { 'id': tblCard.idCard }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

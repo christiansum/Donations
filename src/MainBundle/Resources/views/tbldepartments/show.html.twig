@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblDepartments</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Iddept</th>
+                <td>{{ tblDepartment.idDept }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ tblDepartment.name }}</td>
+            </tr>
+            <tr>
+                <th>Createddt</th>
+                <td>{% if tblDepartment.createdDt %}{{ tblDepartment.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modifieddt</th>
+                <td>{% if tblDepartment.modifiedDt %}{{ tblDepartment.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ tblDepartment.active }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('depts_admin_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('depts_admin_edit', { 'id': tblDepartment.idDept }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

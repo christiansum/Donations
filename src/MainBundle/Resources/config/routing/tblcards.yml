@@ -1,0 +1,24 @@
+cards_index:
+    path:     /
+    defaults: { _controller: "MainBundle:TblCards:index" }
+    methods:  GET
+
+cards_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:TblCards:show" }
+    methods:  GET
+
+cards_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:TblCards:new" }
+    methods:  [GET, POST]
+
+cards_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:TblCards:edit" }
+    methods:  [GET, POST]
+
+cards_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:TblCards:delete" }
+    methods:  DELETE

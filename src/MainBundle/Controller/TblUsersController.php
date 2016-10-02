@@ -24,7 +24,7 @@ class TblUsersController extends Controller
 
         $tblUsers = $em->getRepository('MainBundle:TblUsers')->findAll();
 
-        return $this->render('tblusers/index.html.twig', array(
+        return $this->render('MainBundle:tblusers:index.html.twig', array(
             'tblUsers' => $tblUsers,
         ));
     }
@@ -47,7 +47,7 @@ class TblUsersController extends Controller
             return $this->redirectToRoute('users_show', array('id' => $tblUser->getId()));
         }
 
-        return $this->render('tblusers/new.html.twig', array(
+        return $this->render('MainBundle:tblusers:new.html.twig', array(
             'tblUser' => $tblUser,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class TblUsersController extends Controller
     {
         $deleteForm = $this->createDeleteForm($tblUser);
 
-        return $this->render('tblusers/show.html.twig', array(
+        return $this->render('MainBundle:tblusers:show.html.twig', array(
             'tblUser' => $tblUser,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class TblUsersController extends Controller
             return $this->redirectToRoute('users_edit', array('id' => $tblUser->getId()));
         }
 
-        return $this->render('tblusers/edit.html.twig', array(
+        return $this->render('MainBundle:tblusers:edit.html.twig', array(
             'tblUser' => $tblUser,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

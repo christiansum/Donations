@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblDonations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Iddon</th>
+                <th>Amount</th>
+                <th>Createddt</th>
+                <th>Modifieddt</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tblDonation in tblDonations %}
+            <tr>
+                <td><a href="{{ path('donations_show', { 'id': tblDonation.idDon }) }}">{{ tblDonation.idDon }}</a></td>
+                <td>{{ tblDonation.amount }}</td>
+                <td>{% if tblDonation.createdDt %}{{ tblDonation.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if tblDonation.modifiedDt %}{{ tblDonation.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tblDonation.active }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('donations_show', { 'id': tblDonation.idDon }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('donations_edit', { 'id': tblDonation.idDon }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('donations_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

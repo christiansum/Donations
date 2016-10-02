@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblUsers</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tblUser.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ tblUser.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Secondname</th>
+                <td>{{ tblUser.secondName }}</td>
+            </tr>
+            <tr>
+                <th>Thirdname</th>
+                <td>{{ tblUser.thirdName }}</td>
+            </tr>
+            <tr>
+                <th>Firstlastname</th>
+                <td>{{ tblUser.firstLastname }}</td>
+            </tr>
+            <tr>
+                <th>Secondlastname</th>
+                <td>{{ tblUser.secondLastname }}</td>
+            </tr>
+            <tr>
+                <th>Marriagelastname</th>
+                <td>{{ tblUser.marriageLastname }}</td>
+            </tr>
+            <tr>
+                <th>Iddocument</th>
+                <td>{{ tblUser.idDocument }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ tblUser.gender }}</td>
+            </tr>
+            <tr>
+                <th>Maritalstatus</th>
+                <td>{{ tblUser.maritalStatus }}</td>
+            </tr>
+            <tr>
+                <th>Phonenumber</th>
+                <td>{{ tblUser.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Cellphonenumber</th>
+                <td>{{ tblUser.cellphoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Createddt</th>
+                <td>{% if tblUser.createdDt %}{{ tblUser.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modifieddt</th>
+                <td>{% if tblUser.modifiedDt %}{{ tblUser.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ tblUser.active }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('users_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('users_edit', { 'id': tblUser.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

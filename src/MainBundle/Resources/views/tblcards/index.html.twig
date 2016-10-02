@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TblCards list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idcard</th>
+                <th>Type</th>
+                <th>Cardnum</th>
+                <th>Codeval</th>
+                <th>Duedate</th>
+                <th>Tittle</th>
+                <th>Createddt</th>
+                <th>Modifieddt</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tblCard in tblCards %}
+            <tr>
+                <td><a href="{{ path('cards_show', { 'id': tblCard.idCard }) }}">{{ tblCard.idCard }}</a></td>
+                <td>{{ tblCard.type }}</td>
+                <td>{{ tblCard.cardNum }}</td>
+                <td>{{ tblCard.codeVal }}</td>
+                <td>{% if tblCard.dueDate %}{{ tblCard.dueDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ tblCard.tittle }}</td>
+                <td>{% if tblCard.createdDt %}{{ tblCard.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if tblCard.modifiedDt %}{{ tblCard.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tblCard.active }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cards_show', { 'id': tblCard.idCard }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cards_edit', { 'id': tblCard.idCard }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cards_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

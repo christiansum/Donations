@@ -5,3 +5,31 @@ main_users:
 main_homepage:
     path:     /
     defaults: { _controller: MainBundle:Default:index }
+
+main_cards:
+    resource: "@MainBundle/Resources/config/routing/tblcards.yml"
+    prefix:   /cards
+
+main_countries_admin:
+    resource: "@MainBundle/Resources/config/routing/tblcountries.yml"
+    prefix:   /countries_admin
+
+main_depts_admin:
+    resource: "@MainBundle/Resources/config/routing/tbldepartments.yml"
+    prefix:   /depts_admin
+
+main_donations:
+    resource: "@MainBundle/Resources/config/routing/tbldonations.yml"
+    prefix:   /donations
+
+main_institutions:
+    resource: "@MainBundle/Resources/config/routing/tblinstitutions.yml"
+    prefix:   /institutions
+
+main_role_user_admin:
+    resource: "@MainBundle/Resources/config/routing/tblroleuser.yml"
+    prefix:   /role_user_admin
+
+main_roles_admin:
+    resource: "@MainBundle/Resources/config/routing/tblroles.yml"
+    prefix:   /roles_admin

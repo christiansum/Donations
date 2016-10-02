@@ -1,0 +1,24 @@
+institutions_index:
+    path:     /
+    defaults: { _controller: "MainBundle:TblInstitutions:index" }
+    methods:  GET
+
+institutions_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:TblInstitutions:show" }
+    methods:  GET
+
+institutions_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:TblInstitutions:new" }
+    methods:  [GET, POST]
+
+institutions_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:TblInstitutions:edit" }
+    methods:  [GET, POST]
+
+institutions_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:TblInstitutions:delete" }
+    methods:  DELETE

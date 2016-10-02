@@ -1,0 +1,24 @@
+donations_index:
+    path:     /
+    defaults: { _controller: "MainBundle:TblDonations:index" }
+    methods:  GET
+
+donations_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainBundle:TblDonations:show" }
+    methods:  GET
+
+donations_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:TblDonations:new" }
+    methods:  [GET, POST]
+
+donations_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:TblDonations:edit" }
+    methods:  [GET, POST]
+
+donations_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainBundle:TblDonations:delete" }
+    methods:  DELETE

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TblUsersType extends AbstractType
+class TblInstitutionsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,22 +15,18 @@ class TblUsersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName')
-            ->add('secondName')
-            ->add('thirdName')
-            ->add('firstLastname')
-            ->add('secondLastname')
-            ->add('marriageLastname')
-            ->add('idDocument')
-            ->add('gender')
-            ->add('maritalStatus')
-            ->add('phoneNumber')
-            ->add('cellphoneNumber')
+            ->add('name')
+            ->add('about')
+            ->add('thumbnail')
+            ->add('minAmount')
+            ->add('idCountry')
+            ->add('address')
+            ->add('contactName')
+            ->add('contactPhone')
+            ->add('email')
             ->add('createdDt', 'datetime')
             ->add('modifiedDt', 'datetime')
             ->add('active')
-            ->add('idCountry')
-            ->add('idDept')
             ->add('createdBy')
             ->add('modifiedBy')
         ;
@@ -42,7 +38,7 @@ class TblUsersType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MainBundle\Entity\TblUsers'
+            'data_class' => 'MainBundle\Entity\TblInstitutions'
         ));
     }
 }
