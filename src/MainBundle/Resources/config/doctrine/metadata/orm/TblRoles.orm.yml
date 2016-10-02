@@ -35,7 +35,6 @@ TblRoles:
             type: integer
             nullable: false
             unsigned: false
-            default: '1'
     manyToOne:
         createdBy:
             targetEntity: TblUsers
@@ -44,7 +43,7 @@ TblRoles:
             inversedBy: null
             joinColumns:
                 created_by:
-                    referencedColumnName: id_user
+                    referencedColumnName: id
             orphanRemoval: false
         modifiedBy:
             targetEntity: TblUsers
@@ -53,6 +52,6 @@ TblRoles:
             inversedBy: null
             joinColumns:
                 modified_by:
-                    referencedColumnName: id_user
+                    referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

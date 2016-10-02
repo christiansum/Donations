@@ -18,20 +18,25 @@ TblUsers:
         id_document_UNIQUE:
             columns:
                 - id_document
+        UNIQ_BAE7EFF692FC23A8:
+            columns:
+                - username_canonical
+        UNIQ_BAE7EFF6A0D96FBF:
+            columns:
+                - email_canonical
     id:
-        idUser:
+        id:
             type: integer
             nullable: false
             unsigned: false
             id: true
-            column: id_user
             generator:
                 strategy: IDENTITY
     fields:
         username:
             type: string
             nullable: false
-            length: 45
+            length: 255
             fixed: false
         firstName:
             type: string
@@ -88,7 +93,7 @@ TblUsers:
         email:
             type: string
             nullable: false
-            length: 45
+            length: 255
             fixed: false
         phoneNumber:
             type: integer
@@ -112,7 +117,68 @@ TblUsers:
             type: integer
             nullable: false
             unsigned: false
-            default: '1'
+        usernameCanonical:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: username_canonical
+        emailCanonical:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: email_canonical
+        enabled:
+            type: boolean
+            nullable: false
+        salt:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: last_login
+        locked:
+            type: boolean
+            nullable: false
+        expired:
+            type: boolean
+            nullable: false
+        expiresAt:
+            type: datetime
+            nullable: true
+            column: expires_at
+        confirmationToken:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: confirmation_token
+        passwordRequestedAt:
+            type: datetime
+            nullable: true
+            column: password_requested_at
+        roles:
+            type: array
+            nullable: false
+            length: null
+            fixed: false
+        credentialsExpired:
+            type: boolean
+            nullable: false
+            column: credentials_expired
+        credentialsExpireAt:
+            type: datetime
+            nullable: true
+            column: credentials_expire_at
     manyToOne:
         idCountry:
             targetEntity: TblCountries
@@ -139,7 +205,7 @@ TblUsers:
             inversedBy: null
             joinColumns:
                 created_by:
-                    referencedColumnName: id_user
+                    referencedColumnName: id
             orphanRemoval: false
         modifiedBy:
             targetEntity: TblUsers
@@ -148,6 +214,6 @@ TblUsers:
             inversedBy: null
             joinColumns:
                 modified_by:
-                    referencedColumnName: id_user
+                    referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

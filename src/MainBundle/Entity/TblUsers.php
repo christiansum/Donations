@@ -2,6 +2,7 @@
 
 namespace MainBundle\Entity;
 
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,23 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tbl_users", uniqueConstraints={@ORM\UniqueConstraint(name="id_document_UNIQUE", columns={"id_document"})}, indexes={@ORM\Index(name="fk_users_countries_idx", columns={"id_country"}), @ORM\Index(name="fk_users_departments_idx", columns={"id_dept"}), @ORM\Index(name="fk_users_users_idx", columns={"created_by"}), @ORM\Index(name="fk_users_users_mb_idx", columns={"modified_by"})})
  * @ORM\Entity
  */
-class TblUsers
+class TblUsers extends BaseUser
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idUser;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=45, nullable=false)
-     */
-    private $username;
+    protected $id;
 
     /**
      * @var string
@@ -92,13 +86,6 @@ class TblUsers
     private $maritalStatus;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=45, nullable=false)
-     */
-    private $email;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="phone_number", type="integer", nullable=true)
@@ -158,7 +145,7 @@ class TblUsers
      *
      * @ORM\ManyToOne(targetEntity="TblUsers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id_user")
+     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id")
      * })
      */
     private $createdBy;
@@ -168,10 +155,432 @@ class TblUsers
      *
      * @ORM\ManyToOne(targetEntity="TblUsers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="modified_by", referencedColumnName="id_user")
+     *   @ORM\JoinColumn(name="modified_by", referencedColumnName="id")
      * })
      */
     private $modifiedBy;
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return TblUsers
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set secondName
+     *
+     * @param string $secondName
+     * @return TblUsers
+     */
+    public function setSecondName($secondName)
+    {
+        $this->secondName = $secondName;
+
+        return $this;
+    }
+
+    /**
+     * Get secondName
+     *
+     * @return string 
+     */
+    public function getSecondName()
+    {
+        return $this->secondName;
+    }
+
+    /**
+     * Set thirdName
+     *
+     * @param string $thirdName
+     * @return TblUsers
+     */
+    public function setThirdName($thirdName)
+    {
+        $this->thirdName = $thirdName;
+
+        return $this;
+    }
+
+    /**
+     * Get thirdName
+     *
+     * @return string 
+     */
+    public function getThirdName()
+    {
+        return $this->thirdName;
+    }
+
+    /**
+     * Set firstLastname
+     *
+     * @param string $firstLastname
+     * @return TblUsers
+     */
+    public function setFirstLastname($firstLastname)
+    {
+        $this->firstLastname = $firstLastname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstLastname
+     *
+     * @return string 
+     */
+    public function getFirstLastname()
+    {
+        return $this->firstLastname;
+    }
+
+    /**
+     * Set secondLastname
+     *
+     * @param string $secondLastname
+     * @return TblUsers
+     */
+    public function setSecondLastname($secondLastname)
+    {
+        $this->secondLastname = $secondLastname;
+
+        return $this;
+    }
+
+    /**
+     * Get secondLastname
+     *
+     * @return string 
+     */
+    public function getSecondLastname()
+    {
+        return $this->secondLastname;
+    }
+
+    /**
+     * Set marriageLastname
+     *
+     * @param string $marriageLastname
+     * @return TblUsers
+     */
+    public function setMarriageLastname($marriageLastname)
+    {
+        $this->marriageLastname = $marriageLastname;
+
+        return $this;
+    }
+
+    /**
+     * Get marriageLastname
+     *
+     * @return string 
+     */
+    public function getMarriageLastname()
+    {
+        return $this->marriageLastname;
+    }
+
+    /**
+     * Set idDocument
+     *
+     * @param integer $idDocument
+     * @return TblUsers
+     */
+    public function setIdDocument($idDocument)
+    {
+        $this->idDocument = $idDocument;
+
+        return $this;
+    }
+
+    /**
+     * Get idDocument
+     *
+     * @return integer 
+     */
+    public function getIdDocument()
+    {
+        return $this->idDocument;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return TblUsers
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string 
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set maritalStatus
+     *
+     * @param string $maritalStatus
+     * @return TblUsers
+     */
+    public function setMaritalStatus($maritalStatus)
+    {
+        $this->maritalStatus = $maritalStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get maritalStatus
+     *
+     * @return string 
+     */
+    public function getMaritalStatus()
+    {
+        return $this->maritalStatus;
+    }
+
+    /**
+     * Set phoneNumber
+     *
+     * @param integer $phoneNumber
+     * @return TblUsers
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber
+     *
+     * @return integer 
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * Set cellphoneNumber
+     *
+     * @param integer $cellphoneNumber
+     * @return TblUsers
+     */
+    public function setCellphoneNumber($cellphoneNumber)
+    {
+        $this->cellphoneNumber = $cellphoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get cellphoneNumber
+     *
+     * @return integer 
+     */
+    public function getCellphoneNumber()
+    {
+        return $this->cellphoneNumber;
+    }
+
+    /**
+     * Set createdDt
+     *
+     * @param \DateTime $createdDt
+     * @return TblUsers
+     */
+    public function setCreatedDt($createdDt)
+    {
+        $this->createdDt = $createdDt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdDt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDt()
+    {
+        return $this->createdDt;
+    }
+
+    /**
+     * Set modifiedDt
+     *
+     * @param \DateTime $modifiedDt
+     * @return TblUsers
+     */
+    public function setModifiedDt($modifiedDt)
+    {
+        $this->modifiedDt = $modifiedDt;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiedDt
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDt()
+    {
+        return $this->modifiedDt;
+    }
+
+    /**
+     * Set active
+     *
+     * @param integer $active
+     * @return TblUsers
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return integer 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set idCountry
+     *
+     * @param \MainBundle\Entity\TblCountries $idCountry
+     * @return TblUsers
+     */
+    public function setIdCountry(\MainBundle\Entity\TblCountries $idCountry = null)
+    {
+        $this->idCountry = $idCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get idCountry
+     *
+     * @return \MainBundle\Entity\TblCountries 
+     */
+    public function getIdCountry()
+    {
+        return $this->idCountry;
+    }
+
+    /**
+     * Set idDept
+     *
+     * @param \MainBundle\Entity\TblDepartments $idDept
+     * @return TblUsers
+     */
+    public function setIdDept(\MainBundle\Entity\TblDepartments $idDept = null)
+    {
+        $this->idDept = $idDept;
+
+        return $this;
+    }
+
+    /**
+     * Get idDept
+     *
+     * @return \MainBundle\Entity\TblDepartments 
+     */
+    public function getIdDept()
+    {
+        return $this->idDept;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \MainBundle\Entity\TblUsers $createdBy
+     * @return TblUsers
+     */
+    public function setCreatedBy(\MainBundle\Entity\TblUsers $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \MainBundle\Entity\TblUsers 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set modifiedBy
+     *
+     * @param \MainBundle\Entity\TblUsers $modifiedBy
+     * @return TblUsers
+     */
+    public function setModifiedBy(\MainBundle\Entity\TblUsers $modifiedBy = null)
+    {
+        $this->modifiedBy = $modifiedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiedBy
+     *
+     * @return \MainBundle\Entity\TblUsers 
+     */
+    public function getModifiedBy()
+    {
+        return $this->modifiedBy;
+    }
 }

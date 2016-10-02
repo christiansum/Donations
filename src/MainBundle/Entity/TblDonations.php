@@ -74,7 +74,7 @@ class TblDonations
      *
      * @ORM\ManyToOne(targetEntity="TblUsers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
      */
     private $idUser;
@@ -84,7 +84,7 @@ class TblDonations
      *
      * @ORM\ManyToOne(targetEntity="TblUsers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id_user")
+     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id")
      * })
      */
     private $createdBy;
@@ -94,10 +94,227 @@ class TblDonations
      *
      * @ORM\ManyToOne(targetEntity="TblUsers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="modified_by", referencedColumnName="id_user")
+     *   @ORM\JoinColumn(name="modified_by", referencedColumnName="id")
      * })
      */
     private $modifiedBy;
 
 
+
+    /**
+     * Get idDon
+     *
+     * @return integer 
+     */
+    public function getIdDon()
+    {
+        return $this->idDon;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param float $amount
+     * @return TblDonations
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return float 
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set createdDt
+     *
+     * @param \DateTime $createdDt
+     * @return TblDonations
+     */
+    public function setCreatedDt($createdDt)
+    {
+        $this->createdDt = $createdDt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdDt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDt()
+    {
+        return $this->createdDt;
+    }
+
+    /**
+     * Set modifiedDt
+     *
+     * @param \DateTime $modifiedDt
+     * @return TblDonations
+     */
+    public function setModifiedDt($modifiedDt)
+    {
+        $this->modifiedDt = $modifiedDt;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiedDt
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDt()
+    {
+        return $this->modifiedDt;
+    }
+
+    /**
+     * Set active
+     *
+     * @param integer $active
+     * @return TblDonations
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return integer 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set idCard
+     *
+     * @param \MainBundle\Entity\TblCards $idCard
+     * @return TblDonations
+     */
+    public function setIdCard(\MainBundle\Entity\TblCards $idCard = null)
+    {
+        $this->idCard = $idCard;
+
+        return $this;
+    }
+
+    /**
+     * Get idCard
+     *
+     * @return \MainBundle\Entity\TblCards 
+     */
+    public function getIdCard()
+    {
+        return $this->idCard;
+    }
+
+    /**
+     * Set idIns
+     *
+     * @param \MainBundle\Entity\TblInstitutions $idIns
+     * @return TblDonations
+     */
+    public function setIdIns(\MainBundle\Entity\TblInstitutions $idIns = null)
+    {
+        $this->idIns = $idIns;
+
+        return $this;
+    }
+
+    /**
+     * Get idIns
+     *
+     * @return \MainBundle\Entity\TblInstitutions 
+     */
+    public function getIdIns()
+    {
+        return $this->idIns;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param \MainBundle\Entity\TblUsers $idUser
+     * @return TblDonations
+     */
+    public function setIdUser(\MainBundle\Entity\TblUsers $idUser = null)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \MainBundle\Entity\TblUsers 
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \MainBundle\Entity\TblUsers $createdBy
+     * @return TblDonations
+     */
+    public function setCreatedBy(\MainBundle\Entity\TblUsers $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \MainBundle\Entity\TblUsers 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set modifiedBy
+     *
+     * @param \MainBundle\Entity\TblUsers $modifiedBy
+     * @return TblDonations
+     */
+    public function setModifiedBy(\MainBundle\Entity\TblUsers $modifiedBy = null)
+    {
+        $this->modifiedBy = $modifiedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiedBy
+     *
+     * @return \MainBundle\Entity\TblUsers 
+     */
+    public function getModifiedBy()
+    {
+        return $this->modifiedBy;
+    }
 }

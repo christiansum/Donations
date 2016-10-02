@@ -54,7 +54,7 @@ class TblRoles
      *
      * @ORM\ManyToOne(targetEntity="TblUsers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id_user")
+     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id")
      * })
      */
     private $createdBy;
@@ -64,10 +64,158 @@ class TblRoles
      *
      * @ORM\ManyToOne(targetEntity="TblUsers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="modified_by", referencedColumnName="id_user")
+     *   @ORM\JoinColumn(name="modified_by", referencedColumnName="id")
      * })
      */
     private $modifiedBy;
 
 
+
+    /**
+     * Get idRole
+     *
+     * @return integer 
+     */
+    public function getIdRole()
+    {
+        return $this->idRole;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return TblRoles
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set createdDt
+     *
+     * @param \DateTime $createdDt
+     * @return TblRoles
+     */
+    public function setCreatedDt($createdDt)
+    {
+        $this->createdDt = $createdDt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdDt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedDt()
+    {
+        return $this->createdDt;
+    }
+
+    /**
+     * Set modifiedDt
+     *
+     * @param \DateTime $modifiedDt
+     * @return TblRoles
+     */
+    public function setModifiedDt($modifiedDt)
+    {
+        $this->modifiedDt = $modifiedDt;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiedDt
+     *
+     * @return \DateTime 
+     */
+    public function getModifiedDt()
+    {
+        return $this->modifiedDt;
+    }
+
+    /**
+     * Set active
+     *
+     * @param integer $active
+     * @return TblRoles
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return integer 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \MainBundle\Entity\TblUsers $createdBy
+     * @return TblRoles
+     */
+    public function setCreatedBy(\MainBundle\Entity\TblUsers $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \MainBundle\Entity\TblUsers 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set modifiedBy
+     *
+     * @param \MainBundle\Entity\TblUsers $modifiedBy
+     * @return TblRoles
+     */
+    public function setModifiedBy(\MainBundle\Entity\TblUsers $modifiedBy = null)
+    {
+        $this->modifiedBy = $modifiedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiedBy
+     *
+     * @return \MainBundle\Entity\TblUsers 
+     */
+    public function getModifiedBy()
+    {
+        return $this->modifiedBy;
+    }
 }

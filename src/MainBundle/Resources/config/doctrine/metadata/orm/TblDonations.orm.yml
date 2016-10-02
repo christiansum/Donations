@@ -44,7 +44,6 @@ TblDonations:
             type: integer
             nullable: false
             unsigned: false
-            default: '1'
     manyToOne:
         idCard:
             targetEntity: TblCards
@@ -71,7 +70,7 @@ TblDonations:
             inversedBy: null
             joinColumns:
                 id_user:
-                    referencedColumnName: id_user
+                    referencedColumnName: id
             orphanRemoval: false
         createdBy:
             targetEntity: TblUsers
@@ -80,7 +79,7 @@ TblDonations:
             inversedBy: null
             joinColumns:
                 created_by:
-                    referencedColumnName: id_user
+                    referencedColumnName: id
             orphanRemoval: false
         modifiedBy:
             targetEntity: TblUsers
@@ -89,6 +88,6 @@ TblDonations:
             inversedBy: null
             joinColumns:
                 modified_by:
-                    referencedColumnName: id_user
+                    referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }
