@@ -21,9 +21,6 @@ class TblDonationsType extends AbstractType
             ->add('idIns',null, array(
                 'attr' => ['class' => 'form-control']
                 ))
-            ->add('idUser',null, array(
-                'attr' => ['class' => 'form-control']
-                ))
             ->add('amount',null, array(
                 'attr' => ['class' => 'form-control']
                 ))

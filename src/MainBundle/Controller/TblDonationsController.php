@@ -20,9 +20,9 @@ class TblDonationsController extends Controller
      */
     public function indexAction()
     {
+        
         $em = $this->getDoctrine()->getManager();
-
-        $tblDonations = $em->getRepository('MainBundle:TblDonations')->findAll();
+        $tblDonations = $em->getRepository('MainBundle:TblDonations')->findBy(array());
 
         return $this->render('MainBundle:tbldonations:index.html.twig', array(
             'tblDonations' => $tblDonations,
@@ -40,6 +40,10 @@ class TblDonationsController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $tblDonation->setCreatedBy($this->getUser());
+            $tblDonation->setCreatedDt(new \DateTime());
+            $tblDonation->setIdUser($this->getUser());
+            $tblDonation->setActive(1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($tblDonation);
             $em->flush();
@@ -47,9 +51,26 @@ class TblDonationsController extends Controller
             return $this->redirectToRoute('donations_show', array('id' => $tblDonation->getIdDon()));
         }
 
+        $mesAnio = date("Y-m");
+        $em = $this->getDoctrine()->getManager();
+        $duplicado="false";
+        $duplicated = $em->createQueryBuilder()
+                    ->select('count(tbdon.idDon) as conteo')
+                    ->from('MainBundle:TblDonations','tbdon')
+                    ->where('DATE_FORMAT(tbdon.createdDt,\'%Y-%m\') = \''.$mesAnio.'\'')
+                    ->andWhere('tbdon.idUser = \''.$this->getUser()->getId().'\'')
+                    ->andWhere('tbdon.active = 1')
+                    ->getQuery()
+                    ->getResult();
+
+        if ($duplicated[0]['conteo'] > 0){
+            $duplicado="true";
+        }
+
         return $this->render('MainBundle:tbldonations:new.html.twig', array(
             'tblDonation' => $tblDonation,
             'form' => $form->createView(),
+            'duplicated' => $duplicado
         ));
     }
 
@@ -78,6 +99,8 @@ class TblDonationsController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $tblDonation->setModifiedBy($this->getUser());
+            $tblDonation->setModifiedDt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($tblDonation);
             $em->flush();
@@ -98,14 +121,12 @@ class TblDonationsController extends Controller
      */
     public function deleteAction(Request $request, TblDonations $tblDonation)
     {
-        $form = $this->createDeleteForm($tblDonation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($tblDonation);
-            $em->flush();
-        }
+        $tblDonation->setModifiedBy($this->getUser());
+        $tblDonation->setModifiedDt(new \DateTime());
+        $tblDonation->setActive(0);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($tblDonation);
+        $em->flush();
 
         return $this->redirectToRoute('donations_index');
     }

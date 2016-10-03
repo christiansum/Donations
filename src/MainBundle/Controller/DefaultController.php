@@ -8,6 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+    	$slug = $this->get('app.roles')->verify($this->getUser(),'Administrator');
         return $this->render('MainBundle:Default:index.html.twig');
     }
 

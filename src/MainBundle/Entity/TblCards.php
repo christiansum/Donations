@@ -371,4 +371,8 @@ class TblCards
     {
         return $this->modifiedBy;
     }
+
+    public function __toString() {
+        return $this->type." ****-****-****-".substr($this->cardNum, -4);
+    }
 }

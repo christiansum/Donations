@@ -458,4 +458,8 @@ class TblInstitutions
     {
         return $this->modifiedBy;
     }
+
+    public function __toString() {
+        return $this->name;
+    }
 }

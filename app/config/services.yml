@@ -8,6 +8,8 @@ services:
         class: MainBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+    app.roles:
+        class: MainBundle\Utils\Roles
 
 #    service_name:
 #        class: AppBundle\Directory\ClassName

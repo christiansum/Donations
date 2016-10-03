@@ -14,6 +14,29 @@ use MainBundle\Form\TblRoleUserType;
  */
 class TblRoleUserController extends Controller
 {
+
+    public function verifyRole($user,$role){
+
+        $em = $this->getDoctrine()->getManager();
+        $role = $em->createQueryBuilder()
+                    ->select('tru.type as tipo')
+                    ->from('MainBundle:TblRoleUser','tru')
+                    ->innerJoin('MainBundle:TblRoles','tr','WITH','tr.idRole = tru.idRole')
+                    ->where('tru.idUser = \''.$user->getId().'\'')
+                    ->andWhere('tru.active = 1')
+                    ->getQuery()
+                    ->getResult();
+        if($role){
+            foreach ($role as $oValue){
+                if($oValue['tipo']==$role){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     /**
      * Lists all TblRoleUser entities.
      *
