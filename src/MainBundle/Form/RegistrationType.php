@@ -25,13 +25,25 @@ class RegistrationType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'label' => 'Document ID'
                 ))
-        ->add('gender',null, array(
+        ->add('gender','choice', array(
                 'attr' => ['class' => 'form-control'],
-                'label' => 'Gender'
+                'label' => 'Gender',
+                'choices'  => array(
+                    '' => 'Elija una opcion',
+                    'm' => 'Male',
+                    'f' => 'Female'
+                ),
                 ))
-        ->add('maritalStatus',null, array(
+        ->add('maritalStatus','choice', array(
             'attr' => ['class' => 'form-control'],
-            'label' => 'Marital Status'
+            'label' => 'Marital Status',
+             'choices'  => array(
+                    '' => 'Elija una opcion',
+                    '1' => 'Soltero',
+                    '2' => 'Casado',
+                    '3' => 'Divorciado',
+                    '4' => 'Viudo'
+                ),
             ))
         ->add('cellphoneNumber',null, array(
             'attr' => ['class' => 'form-control'],

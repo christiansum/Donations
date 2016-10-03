@@ -16,9 +16,14 @@ class TblCardsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type',null, array(
+            ->add('type','choice', array(
                 'attr' => ['class' => 'form-control'],
-                'label' => 'Type'
+                'label' => 'Type',
+                'choices'  => array(
+                    '' => 'Elija una opcion',
+                    'Visa' => 'Visa',
+                    'Master Card' => 'Master Card'
+                ),
                 ))
             ->add('cardNum','text', array(
                 'attr' => ['class' => 'form-control'],

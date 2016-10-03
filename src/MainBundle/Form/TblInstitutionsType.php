@@ -42,8 +42,13 @@ class TblInstitutionsType extends AbstractType
             ->add('email',null, array(
                 'attr' => ['class' => 'form-control']
                 ))
-            ->add('active',null, array(
-                'attr' => ['class' => 'form-control']
+            ->add('active','choice', array(
+                'attr' => ['class' => 'form-control'],
+                'choices'  => array(
+                    '' => 'Elija una opcion',
+                    '1' => 'Activo',
+                    '0' => 'Inactivo'
+                ),
                 ))
         ;
     }

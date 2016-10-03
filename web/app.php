@@ -17,7 +17,7 @@ $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
 
-include_once("./functions/includes/VisitsCounter.php");
+include_once("../functions/includes/VisitsCounter.php");
 
 $objVisit = new VisitsCounter();
 $objVisit->counter();

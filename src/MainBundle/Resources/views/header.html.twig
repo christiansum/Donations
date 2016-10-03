@@ -27,6 +27,7 @@
 {% block sidebar %}
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<ul class="nav menu">
+			<li>Visits today: <a id="visits"></a></li>
 			<li class="active"><a href="{{path('main_homepage')}}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg> Home</a></li>
 			<li><a href="{{path('institutions_index')}}"><svg class="glyph stroked calendar blank"><use xlink:href="#stroked-calendar-blank"/></svg> Institutions</a></li>
 			<li><a href="{{path('donations_new')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Donations</a></li>
@@ -39,11 +40,11 @@
 			<li><a href="{{path('users_index')}}"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg> Users Catalog</a></li>
 			<li><a href="{{path('countries_admin_index')}}"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg> Countries Catalog</a></li>
 			<li><a href="{{path('depts_admin_index')}}"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg> Departments Catalog</a></li>
-			{% if is_granted("ROLE_ADMIN") %}
+			<li role="presentation" class="divider"></li>
 			<li><a href="{{path('roles_admin_index')}}"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"/></svg> Roles Catalog</a></li>
 			<li><a href="{{path('role_user_admin_index')}}"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"/></svg> Users Roles Catalog</a></li>
 			<li><a href="{{path('donations_index')}}"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"/></svg> Donations Edit</a></li>
-			{% endif %}
+			
 			
 		</ul>
 	</div><!--/.sidebar-->

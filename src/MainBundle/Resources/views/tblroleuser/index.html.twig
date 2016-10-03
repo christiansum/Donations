@@ -41,8 +41,8 @@
         {% for tblRoleUser in tblRoleUsers %}
             <tr>
                 <td><a href="{{ path('role_user_admin_show', { 'id': tblRoleUser.idRoleUser }) }}">{{ tblRoleUser.idRoleUser }}</a></td>
-                <td>{% if tblRoleUser.idUser %}{{ tblRoleUser.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if tblRoleUser.idRole %}{{ tblRoleUser.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tblRoleUser.idUser }}</td>
+                <td>{{ tblRoleUser.idRole }}</td>
                 <td>{% if tblRoleUser.createdBy %}{{ tblRoleUser.createdBy}}{% endif %}</td>
                 <td>{% if tblRoleUser.createdDt %}{{ tblRoleUser.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if tblRoleUser.modifiedBy %}{{ tblRoleUser.modifiedBy }}{% endif %}</td>

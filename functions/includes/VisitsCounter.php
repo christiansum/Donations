@@ -3,7 +3,7 @@
 class VisitsCounter{
 	public function counter()
     {
-        $file = "functions/counter.txt"; 
+        $file = "counter.txt"; 
         $f = fopen($file, "r");
         if(filesize($file)!=0){
 			$full_file="";
