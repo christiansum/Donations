@@ -7,8 +7,10 @@
             <link rel="stylesheet" href="{{ asset('bundles/main/css/jquery-ui.min.css') }}">
             <link rel="stylesheet" href="{{ asset('bundles/main/css/jquery-ui.structure.min.css') }}">
             <link rel="stylesheet" href="{{ asset('bundles/main/css/bootstrap.min.css')}}" >
+            <link rel="stylesheet" href="{{ asset('bundles/main/css/bootstrap-table.css')}}" >
             <link rel="stylesheet" href="{{ asset('bundles/main/css/datepicker3.css')}}" >
             <link rel="stylesheet" href="{{ asset('bundles/main/css/styles.css')}}" >
+            <script src="{{ asset('bundles/main/js/jquery-3.1.1.slim.min.js') }}"></script>
             <script src="{{ asset('bundles/main/js/lumino.glyphs.js')}}"></script>
             
         {% endblock %}
@@ -19,9 +21,10 @@
         {% block sidebar %}{% endblock %}
         {% block body %}{% endblock %}
         {% block footer %}{% endblock %}
-        <script src="{{ asset('bundles/main/js/jquery-3.1.1.slim.min.js') }}"></script>
+        
         <script src="{{ asset('bundles/main/js/jquery-ui.min.js')}}"></script>
         <script src="{{ asset('bundles/main/js/bootstrap.min.js')}}"></script>
+        <script src="{{ asset('bundles/main/js/bootstrap-table.js')}}"></script>
         <script src="{{ asset('bundles/main/js/chart.min.js')}}"></script>
         <script src="{{ asset('bundles/main/js/chart-data.js')}}"></script>
         <script src="{{ asset('bundles/main/js/easypiechart.js')}}"></script>

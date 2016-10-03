@@ -1,15 +1,38 @@
-{% extends 'base.html.twig' %}
+{% extends 'MainBundle::header.html.twig' %}
+{% block title %}Donations | History{% endblock %}
 
 {% block body %}
-    <h1>TblDonations list</h1>
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">           
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{path('main_homepage')}}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+                <li class="active">Home</li>
+            </ol>
+        </div><!--/.row-->
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Donations</h1>
+            </div>
+        </div><!--/.row-->
 
-    <table>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">List the Donations creted by yourself.</div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+
+    <table data-toggle="table">
         <thead>
             <tr>
-                <th>Iddon</th>
+                <th>Donation ID</th>
+                <th>Institutions</th>
+                <th>Card Number</th>
+                <th>Donor</th>
                 <th>Amount</th>
-                <th>Createddt</th>
-                <th>Modifieddt</th>
+                <th>Created By</th>
+                <th>Date Created</th>
                 <th>Active</th>
                 <th>Actions</th>
             </tr>
@@ -18,9 +41,12 @@
         {% for tblDonation in tblDonations %}
             <tr>
                 <td><a href="{{ path('donations_show', { 'id': tblDonation.idDon }) }}">{{ tblDonation.idDon }}</a></td>
+                <td>{{ tblDonation.idIns }}</td>
+                <td>{{ tblDonation.idCard }}</td>
+                <td>{{ tblDonation.idUser }}</td>
                 <td>{{ tblDonation.amount }}</td>
+                <td>{% if tblDonation.createdBy %}{{ tblDonation.createdBy }}{% endif %}</td>
                 <td>{% if tblDonation.createdDt %}{{ tblDonation.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if tblDonation.modifiedDt %}{{ tblDonation.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ tblDonation.active }}</td>
                 <td>
                     <ul>
@@ -42,4 +68,52 @@
             <a href="{{ path('donations_new') }}">Create a new entry</a>
         </li>
     </ul>
+</div>
+                    </div>
+                </div>
+            </div><!-- /.col-->
+        </div><!-- /.row -->
+        <script>
+            $(function () {
+                $('#hover, #striped, #condensed').click(function () {
+                    var classes = 'table';
+        
+                    if ($('#hover').prop('checked')) {
+                        classes += ' table-hover';
+                    }
+                    if ($('#condensed').prop('checked')) {
+                        classes += ' table-condensed';
+                    }
+                    $('#table-style').bootstrapTable('destroy')
+                        .bootstrapTable({
+                            classes: classes,
+                            striped: $('#striped').prop('checked')
+                        });
+                });
+            });
+        
+            function rowStyle(row, index) {
+                var classes = ['active', 'success', 'info', 'warning', 'danger'];
+        
+                if (index % 2 === 0 && index / 2 < classes.length) {
+                    return {
+                        classes: classes[index / 2]
+                    };
+                }
+                return {};
+            }
+            !function ($) {
+                $(document).on("click","ul.nav li.parent > a > span.icon", function(){        
+                    $(this).find('em:first').toggleClass("glyphicon-minus");      
+                }); 
+                $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+            }(window.jQuery);
+
+            $(window).on('resize', function () {
+              if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+            })
+            $(window).on('resize', function () {
+              if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+            })
+        </script>
 {% endblock %}

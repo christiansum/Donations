@@ -15,24 +15,58 @@ class TblUsersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName')
-            ->add('secondName')
-            ->add('thirdName')
-            ->add('firstLastname')
-            ->add('secondLastname')
-            ->add('marriageLastname')
-            ->add('idDocument')
-            ->add('gender')
-            ->add('maritalStatus')
-            ->add('phoneNumber')
-            ->add('cellphoneNumber')
-            ->add('createdDt', 'datetime')
-            ->add('modifiedDt', 'datetime')
-            ->add('active')
-            ->add('idCountry')
-            ->add('idDept')
-            ->add('createdBy')
-            ->add('modifiedBy')
+            ->add('firstName',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'First Name'
+                ))
+            ->add('secondName',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Second Name'
+                ))
+            ->add('thirdName',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Third Name'
+                ))
+            ->add('firstLastname',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'First Lastname'
+                ))
+            ->add('secondLastname',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Second Lastname'
+                ))
+            ->add('marriageLastname',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Marriage Lastname'
+                ))
+            ->add('idDocument',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Document ID'
+                ))
+            ->add('gender',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Gender'
+                ))
+            ->add('maritalStatus',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Marital Status'
+                ))
+            ->add('phoneNumber',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Phone Number'
+                ))
+            ->add('cellphoneNumber',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Cellphone Number'
+                ))
+            ->add('idCountry',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Country'
+                ))
+            ->add('idDept',null, array(
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Department'
+                ))
         ;
     }
     

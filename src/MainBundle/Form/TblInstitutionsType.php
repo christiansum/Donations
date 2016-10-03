@@ -15,20 +15,36 @@ class TblInstitutionsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('about')
-            ->add('thumbnail')
-            ->add('minAmount')
-            ->add('idCountry')
-            ->add('address')
-            ->add('contactName')
-            ->add('contactPhone')
-            ->add('email')
-            ->add('createdDt', 'datetime')
-            ->add('modifiedDt', 'datetime')
-            ->add('active')
-            ->add('createdBy')
-            ->add('modifiedBy')
+            ->add('name',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('about',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('thumbnail',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('minAmount',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('idCountry',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('address',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('contactName',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('contactPhone',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('email',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('active',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
         ;
     }
     

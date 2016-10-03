@@ -218,4 +218,8 @@ class TblCountries
     {
         return $this->modifiedBy;
     }
+
+    public function __toString() {
+        return $this->name;
+    }
 }

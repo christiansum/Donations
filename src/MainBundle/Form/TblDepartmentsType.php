@@ -15,12 +15,13 @@ class TblDepartmentsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('createdDt', 'datetime')
-            ->add('modifiedDt', 'datetime')
-            ->add('active')
-            ->add('createdBy')
-            ->add('modifiedBy')
+            ->add('name',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+    
+            ->add('active',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
         ;
     }
     

@@ -14,7 +14,7 @@
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> {% if is_granted("ROLE_USER") %}{{ app.user.username }}{% endif %} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+							<li><a href="{{path('users_show', { 'id': app.user.id  })}}"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
 							<li><a href="{{ path('fos_user_security_logout') }}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
 						</ul>
 					</li>
@@ -28,11 +28,11 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<ul class="nav menu">
 			<li class="active"><a href="{{path('main_homepage')}}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg> Home</a></li>
-			<li><a href="#"><svg class="glyph stroked calendar blank"><use xlink:href="#stroked-calendar-blank"/></svg> Institutions</a></li>
-			<li><a href="#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Donations</a></li>
-			<li><a href="#"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Credit Cards</a></li>
-			<li><a href="#"><svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg> History</a></li>
-			<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+			<li><a href="{{path('institutions_index')}}"><svg class="glyph stroked calendar blank"><use xlink:href="#stroked-calendar-blank"/></svg> Institutions</a></li>
+			<li><a href="{{path('donations_new')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Donations</a></li>
+			<li><a href="{{path('cards_index')}}"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Credit Cards</a></li>
+			<li><a href="{{path('donations_index')}}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg> History</a></li>
+			<li><a href="{{path('users_show', { 'id': app.user.id  })}}"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
 			<li role="presentation" class="divider"></li>
 			<li><a href="{{path('institutions_index')}}"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg> Institutions Catalog</a></li>
 			<li><a href="{{path('cards_index')}}"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg> Cards Catalog</a></li>

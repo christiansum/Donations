@@ -40,11 +40,15 @@ class TblCardsController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $tblCard->setCreatedBy($this->getUser());
+            $tblCard->setCreatedDt(new \DateTime());
+            $tblCard->setIdUser($this->getUser());
+            $tblCard->setActive(1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($tblCard);
             $em->flush();
 
-            return $this->redirectToRoute('cards_show', array('id' => $tblCard->getId()));
+            return $this->redirectToRoute('cards_show', array('id' => $tblCard->getIdCard()));
         }
 
         return $this->render('MainBundle:tblcards:new.html.twig', array(
@@ -78,11 +82,13 @@ class TblCardsController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $tblCard->setModifiedBy($this->getUser());
+            $tblCard->setModifiedDt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($tblCard);
             $em->flush();
 
-            return $this->redirectToRoute('cards_edit', array('id' => $tblCard->getId()));
+            return $this->redirectToRoute('cards_edit', array('id' => $tblCard->getIdCard()));
         }
 
         return $this->render('MainBundle:tblcards:edit.html.twig', array(
@@ -98,14 +104,12 @@ class TblCardsController extends Controller
      */
     public function deleteAction(Request $request, TblCards $tblCard)
     {
-        $form = $this->createDeleteForm($tblCard);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($tblCard);
-            $em->flush();
-        }
+        $tblCard->setModifiedBy($this->getUser());
+        $tblCard->setModifiedDt(new \DateTime());
+        $tblCard->setActive(0);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($tblCard);
+        $em->flush();
 
         return $this->redirectToRoute('cards_index');
     }
@@ -120,7 +124,7 @@ class TblCardsController extends Controller
     private function createDeleteForm(TblCards $tblCard)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('cards_delete', array('id' => $tblCard->getId())))
+            ->setAction($this->generateUrl('cards_delete', array('id' => $tblCard->getIdCard())))
             ->setMethod('DELETE')
             ->getForm()
         ;

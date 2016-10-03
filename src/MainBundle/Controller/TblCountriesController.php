@@ -44,7 +44,7 @@ class TblCountriesController extends Controller
             $em->persist($tblCountry);
             $em->flush();
 
-            return $this->redirectToRoute('countries_admin_show', array('id' => $tblCountry->getId()));
+            return $this->redirectToRoute('countries_admin_show', array('id' => $tblCountry->getIdCountry()));
         }
 
         return $this->render('MainBundle:tblcountries:new.html.twig', array(
@@ -82,7 +82,7 @@ class TblCountriesController extends Controller
             $em->persist($tblCountry);
             $em->flush();
 
-            return $this->redirectToRoute('countries_admin_edit', array('id' => $tblCountry->getId()));
+            return $this->redirectToRoute('countries_admin_edit', array('id' => $tblCountry->getIdCountry()));
         }
 
         return $this->render('MainBundle:tblcountries:edit.html.twig', array(
@@ -120,7 +120,7 @@ class TblCountriesController extends Controller
     private function createDeleteForm(TblCountries $tblCountry)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('countries_admin_delete', array('id' => $tblCountry->getId())))
+            ->setAction($this->generateUrl('countries_admin_delete', array('id' => $tblCountry->getIdCountry())))
             ->setMethod('DELETE')
             ->getForm()
         ;

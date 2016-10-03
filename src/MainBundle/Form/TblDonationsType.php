@@ -15,15 +15,18 @@ class TblDonationsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('amount')
-            ->add('createdDt', 'datetime')
-            ->add('modifiedDt', 'datetime')
-            ->add('active')
-            ->add('idCard')
-            ->add('idIns')
-            ->add('idUser')
-            ->add('createdBy')
-            ->add('modifiedBy')
+            ->add('idCard',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('idIns',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('idUser',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('amount',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
         ;
     }
     

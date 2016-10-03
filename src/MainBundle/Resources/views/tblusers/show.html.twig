@@ -1,40 +1,61 @@
-{% extends 'base.html.twig' %}
+{% extends 'MainBundle::header.html.twig' %}
+{% block title %}Users | Info {% endblock %}
 
 {% block body %}
-    <h1>TblUsers</h1>
+     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">           
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{path('main_homepage')}}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+                <li class="active">Users</li>
+                <li class="active">Info</li>
+            </ol>
+        </div><!--/.row-->
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">User Info</h1>
+            </div>
+        </div><!--/.row-->
 
-    <table>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Info about the user selected.</div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+
+    <table data-toggle="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>User ID</th>
                 <td>{{ tblUser.id }}</td>
             </tr>
             <tr>
-                <th>Firstname</th>
+                <th>First Name</th>
                 <td>{{ tblUser.firstName }}</td>
             </tr>
             <tr>
-                <th>Secondname</th>
+                <th>Second Name</th>
                 <td>{{ tblUser.secondName }}</td>
             </tr>
             <tr>
-                <th>Thirdname</th>
+                <th>Third Name</th>
                 <td>{{ tblUser.thirdName }}</td>
             </tr>
             <tr>
-                <th>Firstlastname</th>
+                <th>First Lastname</th>
                 <td>{{ tblUser.firstLastname }}</td>
             </tr>
             <tr>
-                <th>Secondlastname</th>
+                <th>Second Lastname</th>
                 <td>{{ tblUser.secondLastname }}</td>
             </tr>
             <tr>
-                <th>Marriagelastname</th>
+                <th>Marriage Lastname</th>
                 <td>{{ tblUser.marriageLastname }}</td>
             </tr>
             <tr>
-                <th>Iddocument</th>
+                <th>Document ID</th>
                 <td>{{ tblUser.idDocument }}</td>
             </tr>
             <tr>
@@ -42,28 +63,16 @@
                 <td>{{ tblUser.gender }}</td>
             </tr>
             <tr>
-                <th>Maritalstatus</th>
+                <th>Marital Status</th>
                 <td>{{ tblUser.maritalStatus }}</td>
             </tr>
             <tr>
-                <th>Phonenumber</th>
+                <th>Phone Number</th>
                 <td>{{ tblUser.phoneNumber }}</td>
             </tr>
             <tr>
-                <th>Cellphonenumber</th>
+                <th>Cellphone Number</th>
                 <td>{{ tblUser.cellphoneNumber }}</td>
-            </tr>
-            <tr>
-                <th>Createddt</th>
-                <td>{% if tblUser.createdDt %}{{ tblUser.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Modifieddt</th>
-                <td>{% if tblUser.modifiedDt %}{{ tblUser.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Active</th>
-                <td>{{ tblUser.active }}</td>
             </tr>
         </tbody>
     </table>
@@ -81,4 +90,52 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+</div>
+                </div>
+            </div><!-- /.col-->
+        </div><!-- /.row -->
+        <script>
+            $(function () {
+                $('#hover, #striped, #condensed').click(function () {
+                    var classes = 'table';
+        
+                    if ($('#hover').prop('checked')) {
+                        classes += ' table-hover';
+                    }
+                    if ($('#condensed').prop('checked')) {
+                        classes += ' table-condensed';
+                    }
+                    $('#table-style').bootstrapTable('destroy')
+                        .bootstrapTable({
+                            classes: classes,
+                            striped: $('#striped').prop('checked')
+                        });
+                });
+            });
+        
+            function rowStyle(row, index) {
+                var classes = ['active', 'success', 'info', 'warning', 'danger'];
+        
+                if (index % 2 === 0 && index / 2 < classes.length) {
+                    return {
+                        classes: classes[index / 2]
+                    };
+                }
+                return {};
+            }
+            !function ($) {
+                $(document).on("click","ul.nav li.parent > a > span.icon", function(){        
+                    $(this).find('em:first').toggleClass("glyphicon-minus");      
+                }); 
+                $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+            }(window.jQuery);
+
+            $(window).on('resize', function () {
+              if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+            })
+            $(window).on('resize', function () {
+              if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+            })
+        </script>
 {% endblock %}
+

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TblUsers
  *
- * @ORM\Table(name="tbl_users", uniqueConstraints={@ORM\UniqueConstraint(name="id_document_UNIQUE", columns={"id_document"})}, indexes={@ORM\Index(name="fk_users_countries_idx", columns={"id_country"}), @ORM\Index(name="fk_users_departments_idx", columns={"id_dept"}), @ORM\Index(name="fk_users_users_idx", columns={"created_by"}), @ORM\Index(name="fk_users_users_mb_idx", columns={"modified_by"})})
+ * @ORM\Table(name="tbl_users", uniqueConstraints={@ORM\UniqueConstraint(name="id_document_UNIQUE", columns={"id_document"})}, indexes={@ORM\Index(name="fk_users_countries_idx", columns={"id_country"}), @ORM\Index(name="fk_users_departments_idx", columns={"id_dept"})})
  * @ORM\Entity
  */
 class TblUsers extends BaseUser
@@ -65,7 +65,7 @@ class TblUsers extends BaseUser
     private $marriageLastname;
 
     /**
-     * @var integer
+     * @var bigint
      *
      * @ORM\Column(name="id_document", type="bigint", nullable=false)
      */
@@ -100,27 +100,6 @@ class TblUsers extends BaseUser
     private $cellphoneNumber;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_dt", type="datetime", nullable=false)
-     */
-    private $createdDt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="modified_dt", type="datetime", nullable=true)
-     */
-    private $modifiedDt;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="active", type="integer", nullable=false)
-     */
-    private $active;
-
-    /**
      * @var \TblCountries
      *
      * @ORM\ManyToOne(targetEntity="TblCountries")
@@ -140,25 +119,7 @@ class TblUsers extends BaseUser
      */
     private $idDept;
 
-    /**
-     * @var \TblUsers
-     *
-     * @ORM\ManyToOne(targetEntity="TblUsers")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id")
-     * })
-     */
-    private $createdBy;
-
-    /**
-     * @var \TblUsers
-     *
-     * @ORM\ManyToOne(targetEntity="TblUsers")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="modified_by", referencedColumnName="id")
-     * })
-     */
-    private $modifiedBy;
+    
 
     /**
      * Get id
@@ -421,75 +382,6 @@ class TblUsers extends BaseUser
     public function getCellphoneNumber()
     {
         return $this->cellphoneNumber;
-    }
-
-    /**
-     * Set createdDt
-     *
-     * @param \DateTime $createdDt
-     * @return TblUsers
-     */
-    public function setCreatedDt($createdDt)
-    {
-        $this->createdDt = $createdDt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdDt
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedDt()
-    {
-        return $this->createdDt;
-    }
-
-    /**
-     * Set modifiedDt
-     *
-     * @param \DateTime $modifiedDt
-     * @return TblUsers
-     */
-    public function setModifiedDt($modifiedDt)
-    {
-        $this->modifiedDt = $modifiedDt;
-
-        return $this;
-    }
-
-    /**
-     * Get modifiedDt
-     *
-     * @return \DateTime 
-     */
-    public function getModifiedDt()
-    {
-        return $this->modifiedDt;
-    }
-
-    /**
-     * Set active
-     *
-     * @param integer $active
-     * @return TblUsers
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-
-        return $this;
-    }
-
-    /**
-     * Get active
-     *
-     * @return integer 
-     */
-    public function getActive()
-    {
-        return $this->active;
     }
 
     /**

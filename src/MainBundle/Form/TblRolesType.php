@@ -15,12 +15,12 @@ class TblRolesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type')
-            ->add('createdDt', 'datetime')
-            ->add('modifiedDt', 'datetime')
-            ->add('active')
-            ->add('createdBy')
-            ->add('modifiedBy')
+            ->add('type',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('active',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
         ;
     }
     

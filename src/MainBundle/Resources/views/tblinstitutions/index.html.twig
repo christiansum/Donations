@@ -1,23 +1,45 @@
-{% extends 'base.html.twig' %}
+{% extends 'MainBundle::header.html.twig' %}
+{% block title %}Institutions{% endblock %}
 
 {% block body %}
-    <h1>TblInstitutions list</h1>
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">           
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{path('main_homepage')}}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+                <li class="active">Home</li>
+            </ol>
+        </div><!--/.row-->
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Institutions</h1>
+            </div>
+        </div><!--/.row-->
 
-    <table>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">All institutions registered into this app.</div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+
+    <table data-toggle="table">
         <thead>
             <tr>
-                <th>Idins</th>
-                <th>Name</th>
+                <th>Institution ID</th>
+                <th>Name of Institution</th>
                 <th>About</th>
-                <th>Thumbnail</th>
-                <th>Minamount</th>
-                <th>Idcountry</th>
+                <th>Logo</th>    
+                <th>Country</th>
                 <th>Address</th>
-                <th>Contactname</th>
-                <th>Contactphone</th>
+                <th>Contact Name</th>
+                <th>Phone Contact</th>
                 <th>Email</th>
-                <th>Createddt</th>
-                <th>Modifieddt</th>
+                <th>Minimal Amount</th>
+                <th>Created By</th>
+                <th>Date Created</th>
+                <th>Modified By</th>
+                <th>Date Modified</th>
                 <th>Active</th>
                 <th>Actions</th>
             </tr>
@@ -29,13 +51,15 @@
                 <td>{{ tblInstitution.name }}</td>
                 <td>{{ tblInstitution.about }}</td>
                 <td>{{ tblInstitution.thumbnail }}</td>
-                <td>{{ tblInstitution.minAmount }}</td>
                 <td>{{ tblInstitution.idCountry }}</td>
                 <td>{{ tblInstitution.address }}</td>
                 <td>{{ tblInstitution.contactName }}</td>
                 <td>{{ tblInstitution.contactPhone }}</td>
                 <td>{{ tblInstitution.email }}</td>
+                <td>{{ tblInstitution.minAmount }}</td>
+                <td>{% if tblInstitution.createdBy %}{{ tblInstitution.createdBy}}{% endif %}</td>
                 <td>{% if tblInstitution.createdDt %}{{ tblInstitution.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if tblInstitution.modifiedBy %}{{ tblInstitution.modifiedBy}}{% endif %}</td>
                 <td>{% if tblInstitution.modifiedDt %}{{ tblInstitution.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ tblInstitution.active }}</td>
                 <td>

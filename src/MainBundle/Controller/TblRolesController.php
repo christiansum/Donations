@@ -44,7 +44,7 @@ class TblRolesController extends Controller
             $em->persist($tblRole);
             $em->flush();
 
-            return $this->redirectToRoute('roles_admin_show', array('id' => $tblRole->getId()));
+            return $this->redirectToRoute('roles_admin_show', array('id' => $tblRole->getIdRole()));
         }
 
         return $this->render('MainBundle:tblroles:new.html.twig', array(
@@ -82,7 +82,7 @@ class TblRolesController extends Controller
             $em->persist($tblRole);
             $em->flush();
 
-            return $this->redirectToRoute('roles_admin_edit', array('id' => $tblRole->getId()));
+            return $this->redirectToRoute('roles_admin_edit', array('id' => $tblRole->getIdRole()));
         }
 
         return $this->render('MainBundle:tblroles:edit.html.twig', array(
@@ -120,7 +120,7 @@ class TblRolesController extends Controller
     private function createDeleteForm(TblRoles $tblRole)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('roles_admin_delete', array('id' => $tblRole->getId())))
+            ->setAction($this->generateUrl('roles_admin_delete', array('id' => $tblRole->getIdRole())))
             ->setMethod('DELETE')
             ->getForm()
         ;

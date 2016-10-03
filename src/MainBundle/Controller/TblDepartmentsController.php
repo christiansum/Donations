@@ -44,7 +44,7 @@ class TblDepartmentsController extends Controller
             $em->persist($tblDepartment);
             $em->flush();
 
-            return $this->redirectToRoute('depts_admin_show', array('id' => $tblDepartment->getId()));
+            return $this->redirectToRoute('depts_admin_show', array('id' => $tblDepartment->getIdDept()));
         }
 
         return $this->render('MainBundle:tbldepartments:new.html.twig', array(
@@ -82,7 +82,7 @@ class TblDepartmentsController extends Controller
             $em->persist($tblDepartment);
             $em->flush();
 
-            return $this->redirectToRoute('depts_admin_edit', array('id' => $tblDepartment->getId()));
+            return $this->redirectToRoute('depts_admin_edit', array('id' => $tblDepartment->getIdDept()));
         }
 
         return $this->render('MainBundle:tbldepartments:edit.html.twig', array(
@@ -120,7 +120,7 @@ class TblDepartmentsController extends Controller
     private function createDeleteForm(TblDepartments $tblDepartment)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('depts_admin_delete', array('id' => $tblDepartment->getId())))
+            ->setAction($this->generateUrl('depts_admin_delete', array('id' => $tblDepartment->getIdDept())))
             ->setMethod('DELETE')
             ->getForm()
         ;

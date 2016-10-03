@@ -1,12 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends 'MainBundle::header.html.twig' %}
+{% block title %}Roles | Info {% endblock %}
 
 {% block body %}
-    <h1>TblRoles</h1>
+     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">           
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{path('main_homepage')}}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+                <li class="active">Roles</li>
+                <li class="active">Info</li>
+            </ol>
+        </div><!--/.row-->
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Roles Info</h1>
+            </div>
+        </div><!--/.row-->
 
-    <table>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Info about the Role selected.</div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+
+    <table data-toggle="table">
         <tbody>
             <tr>
-                <th>Idrole</th>
+                <th>Role ID</th>
                 <td>{{ tblRole.idRole }}</td>
             </tr>
             <tr>
@@ -14,11 +35,19 @@
                 <td>{{ tblRole.type }}</td>
             </tr>
             <tr>
-                <th>Createddt</th>
+                <th>Created By</th>
+                <td>{% if tblRole.createdBy %}{{ tblRole.createdBy}}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date Created</th>
                 <td>{% if tblRole.createdDt %}{{ tblRole.createdDt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Modifieddt</th>
+                <th>Modified By</th>
+                <td>{% if tblRole.modifiedBy %}{{ tblRole.modifiedBy }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date Modified</th>
                 <td>{% if tblRole.modifiedDt %}{{ tblRole.modifiedDt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>

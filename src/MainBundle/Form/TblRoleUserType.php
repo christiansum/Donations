@@ -15,13 +15,12 @@ class TblRoleUserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('createdDt', 'datetime')
-            ->add('modifiedDt', 'datetime')
-            ->add('active')
-            ->add('idRole')
-            ->add('idUser')
-            ->add('createdBy')
-            ->add('modifiedBy')
+            ->add('idRole',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('idUser',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
         ;
     }
     

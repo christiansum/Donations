@@ -15,12 +15,19 @@ class TblCountriesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('createdDt', 'datetime')
-            ->add('modifiedDt', 'datetime')
-            ->add('active')
-            ->add('createdBy')
-            ->add('modifiedBy')
+            ->add('name',null, array(
+                'attr' => ['class' => 'form-control']
+                ))
+            ->add('createdDt',  'date' ,array(
+                'widget'=> 'single_text',
+                'format'=>'d/M/y',
+                'attr' => ['class' => 'js-datepicker form-control']
+            ))
+            ->add('modifiedDt',  'date' ,array(
+                'widget'=> 'single_text',
+                'format'=>'d/M/y',
+                'attr' => ['class' => 'js-datepicker form-control']
+            ))
         ;
     }
     

@@ -40,11 +40,14 @@ class TblInstitutionsController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $tblInstitution->setCreatedBy($this->getUser());
+            $tblInstitution->setCreatedDt(new \DateTime());
+            $tblInstitution->setActive(1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($tblInstitution);
             $em->flush();
 
-            return $this->redirectToRoute('institutions_show', array('id' => $tblInstitution->getId()));
+            return $this->redirectToRoute('institutions_show', array('id' => $tblInstitution->getIdIns()));
         }
 
         return $this->render('MainBundle:tblinstitutions:new.html.twig', array(
@@ -78,11 +81,13 @@ class TblInstitutionsController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $tblInstitution->setModifiedBy($this->getUser());
+            $tblInstitution->setModifiedDt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($tblInstitution);
             $em->flush();
 
-            return $this->redirectToRoute('institutions_edit', array('id' => $tblInstitution->getId()));
+            return $this->redirectToRoute('institutions_edit', array('id' => $tblInstitution->getIdIns()));
         }
 
         return $this->render('MainBundle:tblinstitutions:edit.html.twig', array(
@@ -98,14 +103,13 @@ class TblInstitutionsController extends Controller
      */
     public function deleteAction(Request $request, TblInstitutions $tblInstitution)
     {
-        $form = $this->createDeleteForm($tblInstitution);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+            $tblInstitution->setModifiedBy($this->getUser());
+            $tblInstitution->setModifiedDt(new \DateTime());
+            $tblInstitution->setActive(0);
             $em = $this->getDoctrine()->getManager();
-            $em->remove($tblInstitution);
+            $em->persist($tblInstitution);
             $em->flush();
-        }
 
         return $this->redirectToRoute('institutions_index');
     }
@@ -120,7 +124,7 @@ class TblInstitutionsController extends Controller
     private function createDeleteForm(TblInstitutions $tblInstitution)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('institutions_delete', array('id' => $tblInstitution->getId())))
+            ->setAction($this->generateUrl('institutions_delete', array('id' => $tblInstitution->getIdIns())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -44,7 +44,7 @@ class TblDonationsController extends Controller
             $em->persist($tblDonation);
             $em->flush();
 
-            return $this->redirectToRoute('donations_show', array('id' => $tblDonation->getId()));
+            return $this->redirectToRoute('donations_show', array('id' => $tblDonation->getIdDon()));
         }
 
         return $this->render('MainBundle:tbldonations:new.html.twig', array(
@@ -82,7 +82,7 @@ class TblDonationsController extends Controller
             $em->persist($tblDonation);
             $em->flush();
 
-            return $this->redirectToRoute('donations_edit', array('id' => $tblDonation->getId()));
+            return $this->redirectToRoute('donations_edit', array('id' => $tblDonation->getIdDon()));
         }
 
         return $this->render('MainBundle:tbldonations:edit.html.twig', array(
@@ -120,7 +120,7 @@ class TblDonationsController extends Controller
     private function createDeleteForm(TblDonations $tblDonation)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('donations_delete', array('id' => $tblDonation->getId())))
+            ->setAction($this->generateUrl('donations_delete', array('id' => $tblDonation->getIdDon())))
             ->setMethod('DELETE')
             ->getForm()
         ;
